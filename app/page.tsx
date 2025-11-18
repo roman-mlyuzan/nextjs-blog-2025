@@ -1,5 +1,6 @@
 import { getAllPosts } from "@/lib/posts";
 import Link from "next/link";
+import { Container } from "./components/container";
 import { PostCard } from "./components/post-card";
 
 export default async function Home() {
@@ -7,7 +8,7 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-900">
-      <main className="mx-auto max-w-4xl px-4 py-12">
+      <Container>
         {/* Header */}
         <div className="mb-12">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
@@ -22,7 +23,7 @@ export default async function Home() {
         {/* Blog Posts Grid */}
         <div className="grid gap-8">
           {posts.map((post) => (
-            <PostCard key={post.id} post={post}></PostCard>
+            <PostCard key={post.id} post={post} />
           ))}
         </div>
 
@@ -35,7 +36,7 @@ export default async function Home() {
             About this blog →
           </Link>
         </div>
-      </main>
+      </Container>
     </div>
   );
 }
