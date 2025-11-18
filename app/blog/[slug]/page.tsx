@@ -1,3 +1,4 @@
+import { LikeButton } from "@/app/components/like-button";
 import { getAllSlugs, getPostBySlug } from "@/lib/posts";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -77,12 +78,15 @@ export default async function BlogPost({ params }: PageProps) {
         </div>
 
         <footer className="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800">
-          <Link
-            href="/"
-            className="text-sm text-blue-600 hover:underline dark:text-blue-400"
-          >
-            ← Back to all posts
-          </Link>
+          <div className="flex items-center justify-between">
+            <Link
+              href="/"
+              className="text-sm text-blue-600 hover:underline dark:text-blue-400"
+            >
+              ← Back to all posts
+            </Link>
+            <LikeButton postId={post.id} />
+          </div>
         </footer>
       </article>
     </div>
