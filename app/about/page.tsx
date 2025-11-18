@@ -1,19 +1,10 @@
-import Link from "next/link";
+import { Container } from "../components/container";
 
 export default function About() {
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-900">
-      <div className="mx-auto max-w-3xl px-4 py-12">
-        {/* Back Link */}
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
-        >
-          ← Back to home
-        </Link>
-
-        {/* Page Content */}
-        <article className="mt-8 prose prose-zinc dark:prose-invert max-w-none">
+      <Container>
+        <article className="prose prose-zinc dark:prose-invert max-w-none">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             About This Blog
           </h1>
@@ -43,23 +34,18 @@ export default function About() {
             <ul className="space-y-2 list-disc list-inside">
               <li>
                 <strong>Days 1-2:</strong> React fundamentals with Tic-Tac-Toe
-                (component composition, state management, immutability)
               </li>
               <li>
                 <strong>Days 3-5:</strong> Hooks mastery with Todo app
-                (useEffect, custom hooks, Context API)
               </li>
               <li>
-                <strong>Days 6-7:</strong> Performance optimization (React.memo,
-                useMemo, useCallback)
+                <strong>Days 6-7:</strong> Performance optimization
               </li>
               <li>
-                <strong>Days 8-10:</strong> Production Finance Dashboard (React
-                Query, React Router, forms, virtual scrolling)
+                <strong>Days 8-10:</strong> Production Finance Dashboard
               </li>
               <li>
                 <strong>Day 11+:</strong> Next.js App Router fundamentals
-                (you're reading this now!)
               </li>
             </ul>
 
@@ -74,16 +60,6 @@ export default function About() {
               <li>Tailwind CSS 4</li>
               <li>React Server Components</li>
             </ul>
-
-            <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50 mt-8">
-              Learning Philosophy
-            </h2>
-            <p>
-              Rather than learning React casually, I'm taking a structured
-              approach to build a strong foundation, document patterns and
-              gotcas, create reusable reference materials, and develop
-              portfolio-worthy projects.
-            </p>
 
             <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50 mt-8">
               Connect
@@ -109,17 +85,7 @@ export default function About() {
             </div>
           </div>
         </article>
-
-        {/* Footer */}
-        <footer className="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800">
-          <Link
-            href="/"
-            className="text-sm text-blue-600 hover:underline dark:text-blue-400"
-          >
-            ← Back to all posts
-          </Link>
-        </footer>
-      </div>
+      </Container>
     </div>
   );
 }
