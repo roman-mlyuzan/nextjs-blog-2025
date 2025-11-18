@@ -1,15 +1,7 @@
 import { getAllPosts } from "@/lib/posts";
 import Link from "next/link";
 
-// 🔍 KEY CONCEPT: This is a SERVER COMPONENT (default in App Router)
-// - Runs on the server during build or on each request
-// - Can use async/await directly in the component
-// - Can access databases, file systems, etc.
-// - Zero JavaScript sent to the client for this component
 export default async function Home() {
-  // ✨ We can use async/await directly! This runs on the SERVER
-  // In traditional React, you'd need useEffect + useState
-
   const posts = await getAllPosts();
 
   return (
@@ -33,7 +25,6 @@ export default async function Home() {
               key={post.id}
               className="group rounded-lg border border-zinc-200 bg-white p-6 transition-all hover:border-zinc-300 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-zinc-700"
             >
-              {/* 🔗 Link is Next.js's <a> tag with client-side navigation */}
               <Link href={`blog/${post.slug}`}>
                 <div className="flex flex-col gap">
                   {/* Metadata */}
