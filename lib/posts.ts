@@ -14,10 +14,11 @@ export interface Post {
 
 const posts: Post[] = [
   {
-    id: '1',
-    slug: 'react-server-components',
-    title: 'Understanding React Server Components',
-    excerpt: 'A deep dive into how React Server Components work and why they matter for modern web applications.',
+    id: "1",
+    slug: "react-server-components",
+    title: "Understanding React Server Components",
+    excerpt:
+      "A deep dive into how React Server Components work and why they matter for modern web applications.",
     content: `React Server Components represent a paradigm shift in how we build React applications. Unlike traditional React components that run in the browser, Server Components execute on the server and send rendered HTML to the client.
 
 ## Key Benefits
@@ -35,15 +36,16 @@ const posts: Post[] = [
 - Building SEO-friendly pages
 
 Server Components are the default in Next.js App Router, making your apps faster by default.`,
-    date: '2025-01-15',
-    author: 'Roman Mlyuzan',
-    readTime: '5 min read'
+    date: "2025-01-15",
+    author: "Roman Mlyuzan",
+    readTime: "5 min read",
   },
   {
-    id: '2',
-    slug: 'nextjs-app-router',
-    title: 'Next.js App Router: A Practical Guide',
-    excerpt: 'Learn the new App Router architecture and how it differs from the Pages Router.',
+    id: "2",
+    slug: "nextjs-app-router",
+    title: "Next.js App Router: A Practical Guide",
+    excerpt:
+      "Learn the new App Router architecture and how it differs from the Pages Router.",
     content: `The App Router is a new paradigm in Next.js that embraces React Server Components and provides a more intuitive file-based routing system.
 
 ## File-Based Routing
@@ -65,15 +67,16 @@ Instead of pages, you organize your app with folders:
 ## Layouts vs Templates
 
 Layouts persist across navigations and maintain state. Templates create new instances on each navigation.`,
-    date: '2025-01-14',
-    author: 'Roman Mlyuzan',
-    readTime: '8 min read'
+    date: "2025-01-14",
+    author: "Roman Mlyuzan",
+    readTime: "8 min read",
   },
   {
-    id: '3',
-    slug: 'from-angular-to-react',
-    title: 'Transitioning from Angular to React',
-    excerpt: 'Key insights and pattern comparisons for Angular developers learning React.',
+    id: "3",
+    slug: "from-angular-to-react",
+    title: "Transitioning from Angular to React",
+    excerpt:
+      "Key insights and pattern comparisons for Angular developers learning React.",
     content: `As an Angular developer moving to React, you'll find both similarities and significant differences.
 
 ## Component Architecture
@@ -99,15 +102,16 @@ Layouts persist across navigations and maintain state. Templates create new inst
 ## Key Takeaways
 
 React's functional approach with hooks feels more JavaScript-native. The explicit nature of state updates prevents hidden bugs but requires discipline around immutability.`,
-    date: '2025-01-13',
-    author: 'Roman Mlyuzan',
-    readTime: '6 min read'
+    date: "2025-01-13",
+    author: "Roman Mlyuzan",
+    readTime: "6 min read",
   },
   {
-    id: '4',
-    slug: 'typescript-react-patterns',
-    title: 'Advanced TypeScript Patterns in React',
-    excerpt: 'Leverage TypeScript to build type-safe React applications with confidence.',
+    id: "4",
+    slug: "typescript-react-patterns",
+    title: "Advanced TypeScript Patterns in React",
+    excerpt:
+      "Leverage TypeScript to build type-safe React applications with confidence.",
     content: `TypeScript elevates React development by catching errors at compile time and improving developer experience.
 
 ## Generic Components
@@ -139,26 +143,28 @@ type ButtonProps =
 - \`Record<K, T>\`: Object with specific keys
 
 TypeScript + React = Developer happiness.`,
-    date: '2025-01-12',
-    author: 'Roman Mlyuzan',
-    readTime: '7 min read'
-  }
+    date: "2025-01-12",
+    author: "Roman Mlyuzan",
+    readTime: "7 min read",
+  },
 ];
 
 // Simulate async database operations
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export async function getAllPosts(): Promise<Post[]> {
   // Simulate network delay
   await delay(100);
-  return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  return posts.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | undefined> {
   await delay(50);
-  return posts.find(post => post.slug === slug);
+  return posts.find((post) => post.slug === slug);
 }
 
 export async function getAllSlugs(): Promise<string[]> {
-  return posts.map(post => post.slug);
+  return posts.map((post) => post.slug);
 }
