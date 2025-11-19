@@ -1,3 +1,5 @@
+import { CommentForm } from "@/app/components/comment-form";
+import { CommentsList } from "@/app/components/comments-list";
 import { Container } from "@/app/components/container";
 import { LikeButton } from "@/app/components/like-button";
 import { getAllSlugs, getPostBySlug } from "@/lib/posts";
@@ -87,6 +89,29 @@ export default async function BlogPost({ params }: PageProps) {
               <LikeButton postId={post.id} />
             </div>
           </footer>
+
+          <section className="mt-16 pt-12 border-t border-zinc-200 dark:border-zinc-800">
+            {/* Section Title */}
+            <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50 mb-8">
+              Comments
+            </h2>
+
+            {/* Comment Form (write first) */}
+            <div className="mb-12">
+              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mb-4">
+                Leave a comment
+              </h3>
+              <CommentForm postId={post.id} />
+            </div>
+
+            {/* Comments List (read after) */}
+            <div>
+              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mb-6">
+                All comments
+              </h3>
+              <CommentsList postId={post.id} />
+            </div>
+          </section>
         </article>
       </Container>
     </div>

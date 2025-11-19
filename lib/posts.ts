@@ -1,5 +1,4 @@
 // Mock blog post data
-// In a real app, this would fetch from a database or CMS
 
 export interface Post {
   id: string;
@@ -167,4 +166,40 @@ export async function getPostBySlug(slug: string): Promise<Post | undefined> {
 
 export async function getAllSlugs(): Promise<string[]> {
   return posts.map((post) => post.slug);
+}
+
+// COMMENT MOCK
+export interface Comment {
+  id: string;
+  postId: string;
+  author: string;
+  content: string;
+  createdAt: string;
+}
+
+const comments: Comment[] = [];
+
+export async function getCommentsByPostId(postId: string): Promise<Comment[]> {
+  await delay(50);
+  return comments
+    .filter((comment) => comment.postId === postId)
+    .sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    );
+}
+
+export async function addComment(
+  comment: Omit<Comment, "id" | "createdAt">
+): Promise<Comment> {
+  await delay(100);
+
+  const newComment: Comment = {
+    ...comment,
+    id: Math.random().toString(36).substr(2, 9),
+    createdAt: new Date().toISOString(),
+  };
+
+  comments.push(newComment);
+  return newComment;
 }
