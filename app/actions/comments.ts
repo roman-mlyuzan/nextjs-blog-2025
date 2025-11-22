@@ -13,7 +13,7 @@ export async function createComment(
   prevState: State | null,
   formData: FormData
 ): Promise<State> {
-  const postId = formData.get("postId") as string;
+  const slug = formData.get("slug") as string;
   const author = formData.get("author") as string;
   const content = formData.get("content") as string;
 
@@ -22,7 +22,7 @@ export async function createComment(
     fields: { author, content },
   });
 
-  if (!author || !content || !postId) {
+  if (!author || !content || !slug) {
     return returnError("All fields are required");
   }
 
@@ -36,12 +36,12 @@ export async function createComment(
 
   try {
     await addComment({
-      postId,
+      slug,
       author,
       content,
     });
 
-    revalidatePath(`/blog/${postId}`);
+    revalidatePath(`/blog/${slug}`);
 
     return {
       success: true,

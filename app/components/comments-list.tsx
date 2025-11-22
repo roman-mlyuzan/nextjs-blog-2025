@@ -1,13 +1,13 @@
-import { getCommentsByPostId } from "@/lib/posts";
+import type { Comment } from "@/lib/posts";
 
 interface CommentListProps {
-  postId: string;
+  commentsPromise: Promise<Comment[]>;
 }
 
-export async function CommentsList({ postId }: CommentListProps) {
-  const comments = await getCommentsByPostId(postId);
+export async function CommentsList({ commentsPromise }: CommentListProps) {
+  const comments = await commentsPromise;
 
-  if (comments.length === 0) {
+  if (!comments || comments.length === 0) {
     return (
       <p className="text-center text-zinc-500 dark:text-zinc-400">
         No comments yet. Be the first to comment!
@@ -19,7 +19,7 @@ export async function CommentsList({ postId }: CommentListProps) {
     <div className="space-y-6">
       {comments.map((comment) => (
         <div
-          key={comment.id}
+          key={comment.slug}
           className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950"
         >
           <div className="mb-2 flex items-center justify-between">

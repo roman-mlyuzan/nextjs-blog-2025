@@ -171,7 +171,7 @@ export async function getAllSlugs(): Promise<string[]> {
 // COMMENT MOCK
 export interface Comment {
   id: string;
-  postId: string;
+  slug: string;
   author: string;
   content: string;
   createdAt: string;
@@ -179,10 +179,10 @@ export interface Comment {
 
 const comments: Comment[] = [];
 
-export async function getCommentsByPostId(postId: string): Promise<Comment[]> {
+export async function getCommentsBySlug(slug: string): Promise<Comment[]> {
   await delay(50);
   return comments
-    .filter((comment) => comment.postId === postId)
+    .filter((comment) => comment.slug === slug)
     .sort(
       (a, b) =>
         new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()

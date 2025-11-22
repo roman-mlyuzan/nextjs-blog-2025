@@ -4,10 +4,10 @@ import { useActionState } from "react";
 import { createComment } from "../actions/comments";
 
 interface Prop {
-  postId: string;
+  slug: string;
 }
 
-export function CommentForm({ postId }: Prop) {
+export function CommentForm({ slug }: Prop) {
   const [state, formAction, isPending] = useActionState(createComment, null);
 
   return (
@@ -16,7 +16,7 @@ export function CommentForm({ postId }: Prop) {
       action={formAction}
       className="space-y-4"
     >
-      <input type="hidden" name="postId" value={postId} />
+      <input type="hidden" name="slug" value={slug} />
 
       {state?.error && (
         <div className="rounded-lg bg-red-50 p-4 text-sm text-red-800 dark:bg-red-900/20 dark:text-red-400">
