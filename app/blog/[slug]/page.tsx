@@ -1,10 +1,12 @@
 import { CommentForm } from "@/app/components/comment-form";
 import { CommentsList } from "@/app/components/comments-list";
+import { CommentsSkeleton } from "@/app/components/comments-skeleton";
 import { Container } from "@/app/components/container";
 import { LikeButton } from "@/app/components/like-button";
 import { getAllSlugs, getPostBySlug } from "@/lib/posts";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 interface PageProps {
   params: Promise<{
@@ -120,7 +122,9 @@ export default async function BlogPost({ params }: PageProps) {
               <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mb-6">
                 All comments
               </h3>
-              <CommentsList postId={post.id} />
+              <Suspense fallback={<CommentsSkeleton />}>
+                <CommentsList postId={post.id} />
+              </Suspense>{" "}
             </div>
           </section>
         </article>
